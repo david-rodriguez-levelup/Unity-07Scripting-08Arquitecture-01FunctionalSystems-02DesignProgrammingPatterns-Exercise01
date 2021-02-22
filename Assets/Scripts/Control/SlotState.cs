@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-public class SlotStateControl : MonoBehaviour
+public class SlotState : MonoBehaviour
 {
     private const int EMPTY = -1;
 
-    [SerializeField] private CommandDataList commandDataList;
+    [SerializeField] private CommandList commandDataList; // TODO: Mover a PlayerSelectionControl!!!
     [SerializeField] Sprite emptyIcon;
 
     public bool Locked { get; set; } = false;
@@ -23,7 +23,7 @@ public class SlotStateControl : MonoBehaviour
         Reset();
     }
 
-    public CommandData Current => currentIndex != EMPTY ? commandDataList.Get(currentIndex) : null;
+    public CommandDef Current => currentIndex != EMPTY ? commandDataList.Get(currentIndex) : null;
 
     public void Next()
     {

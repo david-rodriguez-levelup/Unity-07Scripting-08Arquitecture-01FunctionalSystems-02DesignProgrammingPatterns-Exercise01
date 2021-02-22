@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface IButtonSensor
+public interface IInputSensor
 {
     event Action OnPressed;
 }

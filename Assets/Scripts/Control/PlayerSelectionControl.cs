@@ -1,20 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerSelectionControl : MonoBehaviour
 {
+    [SerializeField] TurnManager turnManager;
+    [SerializeField] GameObject commandReceiver;
 
     [SerializeField] GameObject okButton;
     [SerializeField] EnemySelectionControl enemySelectionControl;
 
-    private SlotStateControl[] slotStateControls;
-    private IButtonSensor[] okButtonSensors;
+    private SlotState[] slotStateControls;
+    private IInputSensor[] okInputSensors;
 
     private bool locked = false;
 
     private void Awake()
     {
-        slotStateControls = GetComponentsInChildren<SlotStateControl>();
-        okButtonSensors = okButton.GetComponents<IButtonSensor>();
+        slotStateControls = GetComponentsInChildren<SlotState>();
+        okInputSensors = okButton.GetComponents<IInputSensor>();
     }
 
     private void Update()
@@ -29,7 +32,7 @@ public class PlayerSelectionControl : MonoBehaviour
 
     private void OnEnable()
     {
-        foreach (IButtonSensor okButtonSensor in okButtonSensors)
+        foreach (IInputSensor okButtonSensor in okInputSensors)
         {
             okButtonSensor.OnPressed += CommitSlotList;
         }
@@ -37,7 +40,7 @@ public class PlayerSelectionControl : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (IButtonSensor okButtonSensor in okButtonSensors)
+        foreach (IInputSensor okButtonSensor in okInputSensors)
         {
             okButtonSensor.OnPressed -= CommitSlotList;
         }
@@ -45,7 +48,7 @@ public class PlayerSelectionControl : MonoBehaviour
 
     public void ResetSlotList()
     {
-        foreach (SlotStateControl slotState in slotStateControls)
+        foreach (SlotState slotState in slotStateControls)
         {
             slotState.Reset();
         }
@@ -57,12 +60,13 @@ public class PlayerSelectionControl : MonoBehaviour
         {
             locked = true;
             Debug.Log("PLAYER COMMANDS:");
-            foreach (SlotStateControl slotState in slotStateControls)
+            foreach (SlotState slotState in slotStateControls)
             {
                 slotState.Locked = true;
                 if (slotState.Current != null)
                 {
-                    Debug.Log($"\t{slotState.Current.Name}");
+                    Debug.Log($"\t{slotState.Current.Id}");
+                    CreateCommand(slotState.Current.Id);
                 }
                 else
                 {
@@ -71,6 +75,21 @@ public class PlayerSelectionControl : MonoBehaviour
             }
             enemySelectionControl.RandomSelection();
         }
+    }
+
+    private void CreateCommand(string id)
+    {
+        ICommandAction[] actions = commandReceiver.GetComponents<ICommandAction>();
+
+        foreach (ICommandAction action in actions)
+        {
+            if (action.Id.Equals(id, StringComparison.OrdinalIgnoreCase))
+            {
+                ICommand command = new DefaultCommand(action);
+                turnManager.AddPlayerCommand(command);
+            }
+        }
+
     }
 
 }

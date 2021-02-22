@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class OnKeyDownButtonSensor : MonoBehaviour, IButtonSensor
+public class OnKeyDownInputSensor : MonoBehaviour, IInputSensor
 {
 
     public event Action OnPressed;

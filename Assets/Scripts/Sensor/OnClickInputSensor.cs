@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OnClickButtonSensor : MonoBehaviour, IButtonSensor
+public class OnClickInputSensor : MonoBehaviour, IInputSensor
 {
 
 	public event Action OnPressed;

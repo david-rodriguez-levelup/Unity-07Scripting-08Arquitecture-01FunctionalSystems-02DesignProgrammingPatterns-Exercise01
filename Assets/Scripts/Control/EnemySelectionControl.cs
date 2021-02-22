@@ -3,16 +3,17 @@
 public class EnemySelectionControl : MonoBehaviour
 {
 
-    private SlotStateControl[] slotStateControls;
+    private SlotState[] slotStateControls;
 
     private void Awake()
     {
-        slotStateControls = GetComponentsInChildren<SlotStateControl>();
+        slotStateControls = GetComponentsInChildren<SlotState>();
     }
 
     public void RandomSelection()
     {
-        foreach (SlotStateControl slotState in slotStateControls)
+        /// TODO: Add juice to this!
+        foreach (SlotState slotState in slotStateControls)
         {
             slotState.Random();
         }
@@ -21,7 +22,7 @@ public class EnemySelectionControl : MonoBehaviour
 
     public void ResetSlotList()
     {
-        foreach (SlotStateControl slotState in slotStateControls)
+        foreach (SlotState slotState in slotStateControls)
         {
             slotState.Reset();
         }
@@ -30,9 +31,9 @@ public class EnemySelectionControl : MonoBehaviour
     private void CommitSlotList()
     {
 Debug.Log("ENEMY COMMANDS:");
-        foreach (SlotStateControl slotState in slotStateControls)
+        foreach (SlotState slotState in slotStateControls)
         {
-Debug.Log($"\t{slotState.Current.Name}");
+Debug.Log($"\t{slotState.Current.Id}");
         }
     }
 

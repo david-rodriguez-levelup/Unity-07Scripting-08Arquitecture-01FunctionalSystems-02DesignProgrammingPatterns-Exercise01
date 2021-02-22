@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CommandDataList
   m_EditorClassIdentifier: 
   commandDataList:
-  - name: ATTACK
+  - id: ATTACK
     icon: {fileID: 21300000, guid: e531230d28b469149968d87e40320634, type: 3}
-  - name: DEFENSE
+  - id: DEFENSE
     icon: {fileID: 21300000, guid: 1720367640e3bdf4e93449ee41d8041f, type: 3}
-  - name: HEALING
+  - id: HEALING
     icon: {fileID: 21300000, guid: 83c47e51ff6fe474d8639085c59bdd55, type: 3}
