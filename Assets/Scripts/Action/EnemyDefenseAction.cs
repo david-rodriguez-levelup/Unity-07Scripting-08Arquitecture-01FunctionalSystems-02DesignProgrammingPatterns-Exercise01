@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerDefenseAction : MonoBehaviour, ICommandAction
+public class EnemyDefenseAction : MonoBehaviour, ICommandAction
 {
     private const string ID = "DEFENSE";
 

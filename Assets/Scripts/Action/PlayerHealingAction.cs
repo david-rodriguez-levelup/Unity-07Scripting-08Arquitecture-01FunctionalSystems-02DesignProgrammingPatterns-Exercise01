@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-public class PlayerHealingAction : ICommandAction
+public class PlayerHealingAction : MonoBehaviour, ICommandAction
 {
-   private const string ID = "HEALING";
+    private const string ID = "HEALING";
 
     public string Id => ID;
 
     public void Perform()
     {
-        Debug.Log($"Performing ACTION {ID}!");
+        Debug.Log($"\t{name} performs ACTION {ID}!");
     }
 }

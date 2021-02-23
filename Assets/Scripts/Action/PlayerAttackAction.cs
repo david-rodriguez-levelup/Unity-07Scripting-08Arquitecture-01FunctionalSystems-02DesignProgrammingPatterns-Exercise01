@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerAttackAction : ICommandAction
+public class PlayerAttackAction : MonoBehaviour, ICommandAction
 {
     private const string ID = "ATTACK";
 
@@ -8,6 +8,6 @@ public class PlayerAttackAction : ICommandAction
 
     public void Perform()
     {
-        Debug.Log($"Performing ACTION {ID}!");
+        Debug.Log($"\t{name} performs ACTION {ID}!");
     }
 }

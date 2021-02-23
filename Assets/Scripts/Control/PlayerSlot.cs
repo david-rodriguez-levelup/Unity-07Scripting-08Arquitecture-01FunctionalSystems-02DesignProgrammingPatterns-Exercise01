@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerSlotControl : MonoBehaviour
+public class PlayerSlot : MonoBehaviour
 {
 
     private SlotState slotState;
@@ -33,7 +33,7 @@ public class PlayerSlotControl : MonoBehaviour
         if (!slotState.Locked)
         {
             slotState.Next();
-        } 
+        }
     }   
 
 }

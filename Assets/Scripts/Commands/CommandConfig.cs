@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class CommandDef
+public class CommandConfig
 {
 
     [SerializeField] private string id;

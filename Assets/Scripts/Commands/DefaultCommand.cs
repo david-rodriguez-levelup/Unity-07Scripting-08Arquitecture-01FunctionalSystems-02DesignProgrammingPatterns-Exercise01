@@ -12,8 +12,12 @@ public class DefaultCommand : ICommand
 
     public virtual void Execute()
     {
-        Debug.Log($"Executing COMMAND {action.Id}!");
         action.Perform();
+    }
+
+    public override string ToString()
+    {
+        return $"{action.Id}[{action.GetType()}]";
     }
 
 }

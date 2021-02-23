@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class PlayerDefenseAction : MonoBehaviour, ICommandAction
+public class EnemyHealingAction : MonoBehaviour, ICommandAction
 {
-    private const string ID = "DEFENSE";
+    private const string ID = "HEALING";
 
     public string Id => ID;
 
