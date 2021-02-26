@@ -42,6 +42,7 @@ public class TurnManager : MonoBehaviour
         // ... and wait for event playerCommandSelection.OnSelectionDone!
     }
 
+
     private void AddPlayerCommands(ICommand[] commands)
     {
         Debug.Log("Player commands:");
